@@ -38,6 +38,14 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(String username, String password, String name, String surname, Privilege privilege) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.privilege = privilege;
+    }
+
     public Integer getId() {
         return id;
     }

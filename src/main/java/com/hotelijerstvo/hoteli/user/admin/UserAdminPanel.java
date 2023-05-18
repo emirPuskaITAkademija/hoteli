@@ -7,6 +7,7 @@ import com.hotelijerstvo.hoteli.user.service.UserServiceFactory;
 import com.hotelijerstvo.hoteli.user.service.UserServiceLocal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -60,8 +61,18 @@ public class UserAdminPanel extends VBox {
                         privilegeChoiceBox,
                         addButton,
                         deleteButton);
-
+        addButton.setOnAction(this::onAddButtonHandle);
         return usernameFormHBox;
+    }
+
+    private void onAddButtonHandle(ActionEvent actionEvent){
+        String usernameInput = usernameTextField.getText();
+        String passwordInput = passwordField.getText();
+        String nameInput = nameTextField.getText();
+        String surnameInput = surnameTextField.getText();
+        Privilege privilege = privilegeChoiceBox.getSelectionModel().getSelectedItem();
+        User user = new User(usernameInput, passwordInput, nameInput, surnameInput, privilege);
+        UserServiceLocal.USER_SERVICE.save(user);
     }
 
     private void bindTableWithData() {
