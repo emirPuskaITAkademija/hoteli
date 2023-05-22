@@ -10,6 +10,9 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "room")
+@NamedQueries({
+        @NamedQuery(name = "Room.findAll", query = "SELECT r FROM Room r")
+})
 public class Room  implements Serializable {
 
     @Id

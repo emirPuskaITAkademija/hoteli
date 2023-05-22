@@ -68,6 +68,16 @@ public class LoginEvent implements EventHandler<ActionEvent> {
         Controller controller = Controller.instance();
         User user = controller.getLoggedUser();
         Privilege privilege = user.getPrivilege();
+        /**
+         * ADMIN & USER.
+         * <p>
+         *     šef hotela ili vlasnik hotela
+         * </p>
+         * <p>
+         *     uposlenik na recepciji hotela.
+         *
+         * </p>
+         */
         if("admin".equalsIgnoreCase(privilege.getName())){
             showAdminView();
         }else{

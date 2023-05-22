@@ -17,7 +17,7 @@ module com.hotelijerstvo.hoteli {
     opens com.hotelijerstvo.hoteli.user.privilege to org.hibernate.orm.core;
     opens com.hotelijerstvo.hoteli.reservation to org.hibernate.orm.core;
     opens com.hotelijerstvo.hoteli.reservation.guest to org.hibernate.orm.core;
-    opens com.hotelijerstvo.hoteli.reservation.room to org.hibernate.orm.core;
+    opens com.hotelijerstvo.hoteli.reservation.room to org.hibernate.orm.core, javafx.base;
 
     exports com.hotelijerstvo.hoteli;
     opens com.hotelijerstvo.hoteli.user.service to org.hibernate.orm.core;

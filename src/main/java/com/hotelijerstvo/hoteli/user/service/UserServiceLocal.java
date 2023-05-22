@@ -1,15 +1,11 @@
 package com.hotelijerstvo.hoteli.user.service;
 
+import com.hotelijerstvo.hoteli.service.BaseService;
 import com.hotelijerstvo.hoteli.user.User;
 
-import java.util.List;
-
-public interface UserServiceLocal {
+public interface UserServiceLocal extends BaseService<User, Integer> {
 
     UserServiceLocal USER_SERVICE = new UserService();
-    List<User> findAll();
 
     User login(String username, String password);
-
-    void save(User user);
 }

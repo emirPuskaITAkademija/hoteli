@@ -1,5 +1,6 @@
 package com.hotelijerstvo.hoteli.user.admin;
 
+import com.hotelijerstvo.hoteli.Controller;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -38,6 +39,7 @@ public class AdminBorderPane extends BorderPane {
         logoutMenuHBox.setAlignment(Pos.CENTER_RIGHT);
         logoutMenuHBox.setPadding(new Insets(10));
         logoutMenuHBox.getChildren().add(logoutButton);
+        logoutButton.setOnAction(Controller.instance().getEventBus().getLogoutEvent());
 
         GridPane topMenuPane = new GridPane();
         topMenuPane.setHgap(300);

@@ -19,6 +19,11 @@ class UserService implements UserServiceLocal{
     }
 
     @Override
+    public User findBy(Integer primaryKey) {
+        return null;
+    }
+
+    @Override
     public User login(String username, String password) {
         if(username == null || username.isEmpty() || password == null || password.isEmpty()){
             return null;
@@ -42,6 +47,27 @@ class UserService implements UserServiceLocal{
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public void delete(User user) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        if(!entityManager.contains(user)){
+            user = entityManager.merge(user);
+        }
+        entityManager.remove(user);
+        //entityManager.remove(entityManager.contains(user) ? user: entityManager.merge(user));
+        entityManager.getTransaction().commit();
+    }
+
+    @Override
+    public User update(User user) {
+        EntityManager entityManager = getEntityManager();
+        entityManager.getTransaction().begin();
+        user = entityManager.merge(user);
+        entityManager.getTransaction().commit();
+        return user;
     }
 
     public EntityManager getEntityManager(){
